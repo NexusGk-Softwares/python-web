@@ -113,3 +113,46 @@ searchBox.addEventListener('input', () => {
     currentPage = 1;
     fetchAlbums(currentPage, searchBox.value);
 });
+
+if (loginForm) {
+    loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Mock credentials (replace with real authentication in production)
+        const mockEmail = "user@example.com"; // Change this to your desired email
+        const mockPassword = "password123"; // Change this to your desired password
+
+        // Simulate authentication
+        if (email === mockEmail && password === mockPassword) {
+            window.location.href = 'home.html'; // Redirect to home page
+        } else {
+            loginError.textContent = "Invalid email or password.";
+        }
+    });
+}
+// Pagination for photos
+const prevPhotoButton = document.getElementById('prev-photo-btn');
+const nextPhotoButton = document.getElementById('next-photo-btn');
+const photoPageNum = document.getElementById('photo-page-num');
+
+// Update page number on pagination
+prevPhotoButton.addEventListener('click', () => {
+    if (currentPhotoPage > 1) {
+        currentPhotoPage--;
+        fetchPhotos(currentPhotoPage);
+        photoPageNum.textContent = `Page ${currentPhotoPage}`;
+        nextPhotoButton.disabled = false;
+        if (currentPhotoPage === 1) prevPhotoButton.disabled = true;
+    }
+});
+
+nextPhotoButton.addEventListener('click', () => {
+    currentPhotoPage++;
+    fetchPhotos(currentPhotoPage);
+    photoPageNum.textContent = `Page ${currentPhotoPage}`;
+    prevPhotoButton.disabled = false;
+    // Optionally, you can add logic to disable next button when you reach the last page
+});

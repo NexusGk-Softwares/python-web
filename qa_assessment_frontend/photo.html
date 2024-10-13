@@ -5,14 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Page</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Grid layout for photos */
+        .photo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .photo-card {
+            text-align: center;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .photo-card img {
+            max-width: 100px;
+            border-radius: 4px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .pagination button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .pagination button:hover {
+            background-color: #0056b3;
+        }
+        /* Add these styles to your styles.css */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.photo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.photo-card {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.photo-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Photo Page</h1>
         <p>This page lists photos fetched from an API.</p>
-        <ul id="photo-list"></ul>  <!-- Placeholder for photos -->
+
+        <!-- Grid to display photos -->
+        <ul id="photo-list" class="photo-container"></ul>
+
+        <!-- Pagination Controls -->
+        <div class="pagination">
+            <button id="prev-photo-btn">Previous</button>
+            <span id="photo-page-num">Page 1</span>
+            <button id="next-photo-btn">Next</button>
+        </div>
+
         <a href="home.html">Go back to Home</a>
     </div>
+
     <script src="js/app.js"></script>
 </body>
 </html>
